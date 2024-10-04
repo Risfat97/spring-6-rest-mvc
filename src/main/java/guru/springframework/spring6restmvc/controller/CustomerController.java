@@ -40,6 +40,13 @@ public class CustomerController {
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("{customerId}")
+    public ResponseEntity deleteCustomerById(@PathVariable("customerId") UUID customerId) {
+        customerService.deleteCustomerById(customerId);
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public List<Customer> listAllCustomers(){
         return customerService.getAllCustomers();
